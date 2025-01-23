@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2bsd6chi2q48"]
+
+[ext_resource type="Script" path="res://game/card/card.gd" id="1_twy56"]
+[ext_resource type="Texture2D" uid="uid://fdi6213kn1us" path="res://assets/pair_collections/flags/USA.png" id="2_4mys4"]
+[ext_resource type="Texture2D" uid="uid://ow721wj7umff" path="res://assets/pair_collections/flags/Reverse.png" id="3_f3b1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ttk"]
+size = Vector2(200, 200)
+
+[node name="Card" type="Node2D"]
+position = Vector2(100, 100)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_twy56")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("2_4mys4")
+
+[node name="ReverseImage" type="Sprite2D" parent="."]
+texture = ExtResource("3_f3b1h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f8ttk")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
