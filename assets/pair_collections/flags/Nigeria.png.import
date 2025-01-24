@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnd7oufsaod7h"
-path="res://.godot/imported/USA.png-6112971b7b14ea127d9d0fb6e7399c84.ctex"
+uid="uid://34ghqixwvnuw"
+path="res://.godot/imported/Nigeria.png-614d0b6ba004d736d92d968fcedcbdd2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pair_collections/flags/USA.png"
-dest_files=["res://.godot/imported/USA.png-6112971b7b14ea127d9d0fb6e7399c84.ctex"]
+source_file="res://assets/pair_collections/flags/Nigeria.png"
+dest_files=["res://.godot/imported/Nigeria.png-614d0b6ba004d736d92d968fcedcbdd2.ctex"]
 
 [params]
 

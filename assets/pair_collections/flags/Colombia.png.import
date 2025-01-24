@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnd7oufsaod7h"
-path="res://.godot/imported/USA.png-6112971b7b14ea127d9d0fb6e7399c84.ctex"
+uid="uid://dkdoqxugpyys6"
+path="res://.godot/imported/Colombia.png-6704ca8150a7c35e9513076c5661197c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pair_collections/flags/USA.png"
-dest_files=["res://.godot/imported/USA.png-6112971b7b14ea127d9d0fb6e7399c84.ctex"]
+source_file="res://assets/pair_collections/flags/Colombia.png"
+dest_files=["res://.godot/imported/Colombia.png-6704ca8150a7c35e9513076c5661197c.ctex"]
 
 [params]
 
