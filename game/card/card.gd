@@ -23,3 +23,8 @@ func _on_pressed():
 	var tween_rotate_card_revert = create_tween()
 	tween_rotate_card_revert.tween_property(self, "scale:x", 1, 0.5)
 	await tween_rotate_card_revert.finished
+
+
+func _on_resized():
+	# adjust pivot position
+	self.pivot_offset = Vector2(self.size.x / 2, self.size.y / 2)
