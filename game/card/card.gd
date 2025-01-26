@@ -4,7 +4,6 @@ var pair_number : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pair_number = randi_range(0, 34)
 	$Image.texture = ImageManager.get_image(pair_number)
 
 

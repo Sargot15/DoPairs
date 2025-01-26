@@ -1,20 +1,37 @@
 extends Control
 
 @export var card_scene: PackedScene 
-@export var max_cards: int = 50
+@export_range(7,35) var num_pairs: int = 35
 @export var card_separation: int = 4
 
 @onready var grid_container: GridContainer = $CardsGrid
 
 func _ready():
-	generate_cards(max_cards)
-	#generate_cards(randi_range(3, max_cards))
+	generate_cards(num_pairs * 2)
 
 func generate_cards(num_cards):
 
+   # clean board if existed
+	for child in grid_container.get_children():
+		child.queue_free()
+		
 	# add new cards
-	for i in range(num_cards):
+	var cards = []
+	for i in range(num_pairs):
 		var card = card_scene.instantiate()
+		card.pair_number = i
+		cards.append(card)
+		
+		card = card_scene.instantiate()
+		card.pair_number = i
+		cards.append(card)
+		
+	# randomize cards order
+	randomize()
+	cards.shuffle()
+	
+	# add cards to the board
+	for card in cards:
 		grid_container.add_child(card)
 	
 	adjust_size(num_cards)
@@ -46,8 +63,12 @@ func _notification(what):
 	# adjust size when the window size is changed
 	if what == NOTIFICATION_RESIZED:
 		if (grid_container != null):
-			adjust_size(max_cards)
+			adjust_size(num_pairs * 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_button_pressed():
+	generate_cards(num_pairs * 2)
