@@ -32,7 +32,11 @@ func adjust_size(num_cards):
 	grid_container.columns = columns
 
 	# adjust card size
-	var card_size = floor((container_size_x - (columns * card_separation)) / columns)
+	var rows = ceil (num_cards / columns)
+	var card_size_by_x = floor((container_size_x - (columns * card_separation)) / columns)
+	var card_size_by_y = floor((container_size_y - (rows * card_separation)) / rows)
+	
+	var card_size = min(card_size_by_x, card_size_by_y)
 	
 	for card in grid_container.get_children():
 		card.custom_minimum_size = Vector2(card_size, card_size)
