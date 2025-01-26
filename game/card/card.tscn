@@ -1,23 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2bsd6chi2q48"]
+[gd_scene load_steps=3 format=3 uid="uid://b2bsd6chi2q48"]
 
 [ext_resource type="Script" path="res://game/card/card.gd" id="1_twy56"]
-[ext_resource type="Texture2D" uid="uid://bnd7oufsaod7h" path="res://assets/pair_collections/flags/USA.png" id="2_4mys4"]
 [ext_resource type="Texture2D" uid="uid://ckfah6s4wxehb" path="res://assets/pair_collections/flags/Reverse.png" id="3_f3b1h"]
 
 [node name="Card" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(200, 200)
-offset_right = 200.0
-offset_bottom = 200.0
-pivot_offset = Vector2(100, 100)
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+offset_right = 75.0
+offset_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_twy56")
 
-[node name="Image" type="Sprite2D" parent="."]
-position = Vector2(100, 100)
-texture = ExtResource("2_4mys4")
+[node name="Image" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
 
-[node name="ReverseImage" type="Sprite2D" parent="."]
-position = Vector2(100, 100)
+[node name="ReverseImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_f3b1h")
+expand_mode = 2
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
