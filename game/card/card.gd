@@ -7,6 +7,7 @@ class_name Card
 var pair_number : int = 0
 var pair_found : bool = false;
 var is_turned_up : bool = false;
+var tries_failed : int = 0
 
 signal is_clicked(card)
 
@@ -37,6 +38,10 @@ func turn_card():
 	var tween_rotate_card_revert = create_tween()
 	tween_rotate_card_revert.tween_property(self, "scale:x", 1, tween_time_to_turn)
 	await tween_rotate_card_revert.finished
+	
+	# if the card is turn down then we count it as a fail
+	if !is_turned_up:
+		tries_failed += 1
 
 
 func _on_resized():

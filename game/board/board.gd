@@ -16,9 +16,15 @@ var game_time : float = 0
 
 func _ready():
 	generate_cards(num_pairs * 2)
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if game_started:
+		game_time += delta
+	
+	label_time.text = "Time: " + str(game_time).pad_decimals(0)
 
 func generate_cards(num_cards):
-
 	# clean board if existed
 	clean_board()
 		
@@ -79,14 +85,6 @@ func adjust_size(num_cards):
 		
 		
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if game_started:
-		game_time += delta
-	
-	label_time.text = "Time: " + str(game_time).pad_decimals(0)
-
-
 func _on_button_pressed():
 	generate_cards(num_pairs * 2)
 
@@ -119,6 +117,11 @@ func check_pair():
 	else:
 		# pair not found, show the cards for a moment before let the user to pick other cards
 		$TimerToNextTry.start()
+		
+		# add a penalty on the game timer. The penalty is greater if the card was clicked many times
+		game_time += card_up_1.tries_failed
+		game_time += card_up_2.tries_failed
+		print("added penalty: [" + str(card_up_1.tries_failed) + "," + str(card_up_2.tries_failed) + "]")
 
 func _on_timer_to_next_try_timeout():
 	card_up_1.turn_card()
