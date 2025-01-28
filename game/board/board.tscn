@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qfdc7")
+num_pairs = 7
 card_scene = ExtResource("2_e7icj")
 
 [node name="CardsGrid" type="GridContainer" parent="."]
@@ -24,5 +25,9 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Generate Cards"
 
+[node name="TimerToNextTry" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="resized" from="CardsGrid" to="." method="_on_cards_grid_resized"]
 [connection signal="pressed" from="Debug-GenerateCards" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="TimerToNextTry" to="." method="_on_timer_to_next_try_timeout"]

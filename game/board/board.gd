@@ -1,19 +1,22 @@
 extends Control
 
-@export var card_scene: PackedScene 
 @export_range(7,35) var num_pairs: int = 35
+@export var card_scene: PackedScene 
 @export var card_separation: int = 4
 
 @onready var grid_container: GridContainer = $CardsGrid
+
+var card_up_1 : Card = null
+var card_up_2 : Card = null
+var pairs_found : int = 0
 
 func _ready():
 	generate_cards(num_pairs * 2)
 
 func generate_cards(num_cards):
 
-   # clean board if existed
-	for child in grid_container.get_children():
-		child.queue_free()
+	# clean board if existed
+	clean_board()
 		
 	# add new cards
 	var cards = []
@@ -33,8 +36,17 @@ func generate_cards(num_cards):
 	# add cards to the board
 	for card in cards:
 		grid_container.add_child(card)
+		# connect to the is_clicked signal
+		card.is_clicked.connect(_on_card_is_clicked)
 	
 	adjust_size(num_cards)
+	
+func clean_board():
+	
+	pairs_found = 0
+	
+	for child in grid_container.get_children():
+		child.queue_free()
 
 
 func adjust_size(num_cards):
@@ -72,3 +84,35 @@ func _process(delta):
 
 func _on_button_pressed():
 	generate_cards(num_pairs * 2)
+
+func _on_card_is_clicked(card):
+	if card_up_1 == null:
+		card_up_1 = card
+		card_up_1.turn_card()
+		return
+		
+	if card_up_2 == null:
+		card_up_2 = card
+		card_up_2.turn_card()
+		
+		check_pair()
+		
+func check_pair():
+	if card_up_1.pair_number == card_up_2.pair_number:
+		# pair found, reset the cards to let the user pick another ones
+		card_up_1 = null
+		card_up_2 = null
+		pairs_found += 1
+		if (pairs_found == num_pairs):
+			print("You win!!")
+	else:
+		# pair not found, show the cards for a moment before let the user to pick other cards
+		$TimerToNextTry.start()
+
+
+
+func _on_timer_to_next_try_timeout():
+	card_up_1.turn_card()
+	card_up_2.turn_card()
+	card_up_1 = null
+	card_up_2 = null
