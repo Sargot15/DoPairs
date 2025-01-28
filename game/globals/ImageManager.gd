@@ -19,7 +19,7 @@ var image_flag_Germany = preload("res://assets/pair_collections/flags/Germany.pn
 var image_flag_Ghana = preload("res://assets/pair_collections/flags/Ghana.png")
 var image_flag_India = preload("res://assets/pair_collections/flags/India.png")
 var image_flag_Indonesia = preload("res://assets/pair_collections/flags/Indonesia.png")
-var image_flag_Italia = preload("res://assets/pair_collections/flags/Italia.png")
+var image_flag_Italy = preload("res://assets/pair_collections/flags/Italy.png")
 var image_flag_Japan = preload("res://assets/pair_collections/flags/Japan.png")
 var image_flag_Korea = preload("res://assets/pair_collections/flags/Korea.png")
 var image_flag_KSA = preload("res://assets/pair_collections/flags/KSA.png")
@@ -41,41 +41,41 @@ var image_flag_USA = preload("res://assets/pair_collections/flags/USA.png")
 
 
 var image_flags = [
-image_flag_Argentina,
-image_flag_Australia,
-image_flag_Belgium,
-image_flag_Brazil,
-image_flag_Canada,
-image_flag_Chile,
-image_flag_China,
-image_flag_Colombia,
-image_flag_Czech,
-image_flag_Egypt,
-image_flag_Finland,
-image_flag_France,
+image_flag_USA,
 image_flag_Germany,
-image_flag_Ghana,
+image_flag_Brazil,
+image_flag_China,
+image_flag_France,
 image_flag_India,
-image_flag_Indonesia,
-image_flag_Italia,
 image_flag_Japan,
-image_flag_Korea,
-image_flag_KSA,
-image_flag_Mexico,
-image_flag_Nigeria,
-image_flag_Pakistan,
-image_flag_Portugal,
-image_flag_Russia,
-image_flag_SouthAfrica,
-image_flag_Spain,
-image_flag_Sweden,
-image_flag_Switzerland,
-image_flag_Thailand,
-image_flag_Turkey,
 image_flag_UK,
-image_flag_Ukraine,
+image_flag_Russia,
+image_flag_Italy,
+image_flag_Korea,
+image_flag_Indonesia,
+image_flag_Mexico,
+image_flag_Canada,
+image_flag_Spain,
+image_flag_KSA,
+image_flag_Turkey,
+image_flag_Australia,
+image_flag_Argentina,
+image_flag_Nigeria,
+image_flag_Portugal,
+image_flag_Switzerland,
+image_flag_Chile,
+image_flag_SouthAfrica,
+image_flag_Sweden,
 image_flag_Uruguay,
-image_flag_USA
+image_flag_Thailand,
+image_flag_Egypt,
+image_flag_Czech,
+image_flag_Pakistan,
+image_flag_Colombia,
+image_flag_Belgium,
+image_flag_Ukraine,
+image_flag_Ghana,
+image_flag_Finland
 ]
 
 func get_image(index : int ) -> Resource:
