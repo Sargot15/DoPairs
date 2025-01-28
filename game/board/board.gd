@@ -6,10 +6,13 @@ extends Control
 
 @onready var grid_container: GridContainer = $"Full Board/GridPanel/CardsGrid"
 @onready var grid_panel : Panel = $"Full Board/GridPanel"
+@onready var label_time : Label = $"Full Board/TimerPanel/GameTimeLabel"
 
 var card_up_1 : Card = null
 var card_up_2 : Card = null
 var pairs_found : int = 0
+var game_started : bool = false
+var game_time : float = 0
 
 func _ready():
 	generate_cards(num_pairs * 2)
@@ -41,6 +44,9 @@ func generate_cards(num_cards):
 		card.is_clicked.connect(_on_card_is_clicked)
 	
 	adjust_size(num_cards)
+	
+	game_started = false
+	game_time = 0
 	
 func clean_board():
 	
@@ -75,7 +81,10 @@ func adjust_size(num_cards):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if game_started:
+		game_time += delta
+	
+	label_time.text = "Time: " + str(game_time).pad_decimals(0)
 
 
 func _on_button_pressed():
@@ -85,6 +94,11 @@ func _on_card_is_clicked(card):
 	if card_up_1 == null:
 		card_up_1 = card
 		card_up_1.turn_card()
+		
+		# if it is the first card we mark the game as started
+		if !game_started:
+			game_started = true
+		
 		return
 		
 	if card_up_2 == null:
@@ -101,6 +115,7 @@ func check_pair():
 		pairs_found += 1
 		if (pairs_found == num_pairs):
 			print("You win!!")
+			game_started = false
 	else:
 		# pair not found, show the cards for a moment before let the user to pick other cards
 		$TimerToNextTry.start()

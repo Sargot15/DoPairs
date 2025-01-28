@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qfdc7")
-num_pairs = 26
+num_pairs = 15
 card_scene = ExtResource("2_e7icj")
 
 [node name="Full Board" type="Panel" parent="."]
@@ -28,6 +28,21 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.08
+
+[node name="GameTimeLabel" type="Label" parent="Full Board/TimerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time: "
 
 [node name="GridPanel" type="Panel" parent="Full Board"]
 self_modulate = Color(1, 1, 1, 0)
@@ -59,6 +74,8 @@ text = "Generate Cards"
 
 [node name="TimerToNextTry" type="Timer" parent="."]
 one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="is_resized" from="Full Board/GridPanel" to="." method="_on_grid_panel_is_resized"]
 [connection signal="resized" from="Full Board/GridPanel/CardsGrid" to="." method="_on_cards_grid_resized"]
