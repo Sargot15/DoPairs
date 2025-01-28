@@ -2,6 +2,8 @@ extends Control
 
 class_name Card
 
+@export var tween_time_to_turn : float = 0.25
+
 var pair_number : int = 0
 var pair_found : bool = false;
 var is_turned_up : bool = false;
@@ -27,13 +29,13 @@ func turn_card():
 	is_turned_up = !is_turned_up
 	
 	var tween_rotate_card = create_tween()
-	tween_rotate_card.tween_property(self, "scale:x", 0, 0.25)
+	tween_rotate_card.tween_property(self, "scale:x", 0, tween_time_to_turn)
 	await tween_rotate_card.finished
 	
 	$ReverseImage.visible = !is_turned_up
 	
 	var tween_rotate_card_revert = create_tween()
-	tween_rotate_card_revert.tween_property(self, "scale:x", 1, 0.25)
+	tween_rotate_card_revert.tween_property(self, "scale:x", 1, tween_time_to_turn)
 	await tween_rotate_card_revert.finished
 
 

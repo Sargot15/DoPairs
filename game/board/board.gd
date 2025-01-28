@@ -96,7 +96,7 @@ func _on_card_is_clicked(card):
 		card_up_2.turn_card()
 		
 		check_pair()
-		
+
 func check_pair():
 	if card_up_1.pair_number == card_up_2.pair_number:
 		# pair found, reset the cards to let the user pick another ones
@@ -108,8 +108,6 @@ func check_pair():
 	else:
 		# pair not found, show the cards for a moment before let the user to pick other cards
 		$TimerToNextTry.start()
-
-
 
 func _on_timer_to_next_try_timeout():
 	card_up_1.turn_card()

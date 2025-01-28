@@ -78,5 +78,82 @@ image_flag_Ghana,
 image_flag_Finland
 ]
 
+######################################################################################
+######################            POKEMON              ###############################
+######################################################################################
+var image_pokemon_Abra = preload("res://assets/pair_collections/pokemon/Abra.png")
+var image_pokemon_Bulbasur = preload("res://assets/pair_collections/pokemon/Bulbasur.png")
+var image_pokemon_Chansey = preload("res://assets/pair_collections/pokemon/Chansey.png")
+var image_pokemon_Charizard = preload("res://assets/pair_collections/pokemon/Charizard.png")
+var image_pokemon_Charmander = preload("res://assets/pair_collections/pokemon/Charmander.png")
+var image_pokemon_Chikorita = preload("res://assets/pair_collections/pokemon/Chikorita.png")
+var image_pokemon_Cubone = preload("res://assets/pair_collections/pokemon/Cubone.png")
+var image_pokemon_Cyndaquill = preload("res://assets/pair_collections/pokemon/Cyndaquill.png")
+var image_pokemon_Digglet = preload("res://assets/pair_collections/pokemon/Digglet.png")
+var image_pokemon_Ditto = preload("res://assets/pair_collections/pokemon/Ditto.png")
+var image_pokemon_Dragonite = preload("res://assets/pair_collections/pokemon/Dragonite.png")
+var image_pokemon_Eevee = preload("res://assets/pair_collections/pokemon/Eevee.png")
+var image_pokemon_Gengar = preload("res://assets/pair_collections/pokemon/Gengar.png")
+var image_pokemon_Gyarados = preload("res://assets/pair_collections/pokemon/Gyarados.png")
+var image_pokemon_Jigglypuff = preload("res://assets/pair_collections/pokemon/Jigglypuff.png")
+var image_pokemon_Lickitung = preload("res://assets/pair_collections/pokemon/Lickitung.png")
+var image_pokemon_Machop = preload("res://assets/pair_collections/pokemon/Machop.png")
+var image_pokemon_Meowth = preload("res://assets/pair_collections/pokemon/Meowth.png")
+var image_pokemon_Mew = preload("res://assets/pair_collections/pokemon/Mew.png")
+var image_pokemon_Mewtwo = preload("res://assets/pair_collections/pokemon/Mewtwo.png")
+var image_pokemon_MrMime = preload("res://assets/pair_collections/pokemon/MrMime.png")
+var image_pokemon_Oddish = preload("res://assets/pair_collections/pokemon/Oddish.png")
+var image_pokemon_Onyx = preload("res://assets/pair_collections/pokemon/Onyx.png")
+var image_pokemon_Pichu = preload("res://assets/pair_collections/pokemon/Pichu.png")
+var image_pokemon_Pikachu = preload("res://assets/pair_collections/pokemon/Pikachu.png")
+var image_pokemon_Ponyta = preload("res://assets/pair_collections/pokemon/Ponyta.png")
+var image_pokemon_Psyduck = preload("res://assets/pair_collections/pokemon/Psyduck.png")
+var image_pokemon_Slowpoke = preload("res://assets/pair_collections/pokemon/Slowpoke.png")
+var image_pokemon_Snorlax = preload("res://assets/pair_collections/pokemon/Snorlax.png")
+var image_pokemon_Squirtle = preload("res://assets/pair_collections/pokemon/Squirtle.png")
+var image_pokemon_Tauros = preload("res://assets/pair_collections/pokemon/Tauros.png")
+var image_pokemon_Togepi = preload("res://assets/pair_collections/pokemon/Togepi.png")
+var image_pokemon_Totodile = preload("res://assets/pair_collections/pokemon/Totodile.png")
+var image_pokemon_Vulpix = preload("res://assets/pair_collections/pokemon/Vulpix.png")
+var image_pokemon_Wobbuffet = preload("res://assets/pair_collections/pokemon/Wobbuffet.png")
+
+var image_pokemon = [
+image_pokemon_Charizard,
+image_pokemon_Pikachu,
+image_pokemon_Bulbasur,
+image_pokemon_Squirtle,
+image_pokemon_Charmander,
+image_pokemon_Eevee,
+image_pokemon_Mewtwo,
+image_pokemon_Mew,
+image_pokemon_Snorlax,
+image_pokemon_Meowth,
+image_pokemon_Psyduck,
+image_pokemon_Vulpix,
+image_pokemon_Jigglypuff,
+image_pokemon_Gengar,
+image_pokemon_Cubone,
+image_pokemon_MrMime,
+image_pokemon_Ditto,
+image_pokemon_Dragonite,
+image_pokemon_Machop,
+image_pokemon_Oddish,
+image_pokemon_Chikorita,
+image_pokemon_Cyndaquill,
+image_pokemon_Totodile,
+image_pokemon_Onyx,
+image_pokemon_Lickitung,
+image_pokemon_Tauros,
+image_pokemon_Pichu,
+image_pokemon_Togepi,
+image_pokemon_Wobbuffet,
+image_pokemon_Gyarados,
+image_pokemon_Chansey,
+image_pokemon_Digglet,
+image_pokemon_Abra,
+image_pokemon_Ponyta,
+image_pokemon_Slowpoke
+]
+
 func get_image(index : int ) -> Resource:
-	return image_flags[index]
+	return image_pokemon[index]
