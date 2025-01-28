@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://sfxsg2bl7m52"]
+[gd_scene load_steps=4 format=3 uid="uid://sfxsg2bl7m52"]
 
 [ext_resource type="Script" path="res://game/board/board.gd" id="1_qfdc7"]
 [ext_resource type="PackedScene" uid="uid://b2bsd6chi2q48" path="res://game/card/card.tscn" id="2_e7icj"]
+[ext_resource type="Script" path="res://game/board/grid_panel.gd" id="3_e74q8"]
 
 [node name="Board" type="Control"]
 layout_mode = 3
@@ -11,22 +12,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qfdc7")
+num_pairs = 26
 card_scene = ExtResource("2_e7icj")
 
-[node name="CardsGrid" type="GridContainer" parent="."]
-layout_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Full Board" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerPanel" type="Panel" parent="Full Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.08
+
+[node name="GridPanel" type="Panel" parent="Full Board"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.08
+anchor_right = 0.98
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_e74q8")
+
+[node name="CardsGrid" type="GridContainer" parent="Full Board/GridPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Debug-GenerateCards" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 129.0
+offset_bottom = 31.0
 text = "Generate Cards"
 
 [node name="TimerToNextTry" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="resized" from="CardsGrid" to="." method="_on_cards_grid_resized"]
+[connection signal="is_resized" from="Full Board/GridPanel" to="." method="_on_grid_panel_is_resized"]
+[connection signal="resized" from="Full Board/GridPanel/CardsGrid" to="." method="_on_cards_grid_resized"]
 [connection signal="pressed" from="Debug-GenerateCards" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TimerToNextTry" to="." method="_on_timer_to_next_try_timeout"]

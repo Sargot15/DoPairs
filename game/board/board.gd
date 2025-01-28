@@ -4,7 +4,8 @@ extends Control
 @export var card_scene: PackedScene 
 @export var card_separation: int = 4
 
-@onready var grid_container: GridContainer = $CardsGrid
+@onready var grid_container: GridContainer = $"Full Board/GridPanel/CardsGrid"
+@onready var grid_panel : Panel = $"Full Board/GridPanel"
 
 var card_up_1 : Card = null
 var card_up_2 : Card = null
@@ -52,8 +53,8 @@ func clean_board():
 func adjust_size(num_cards):
 	
 	# calculate the number of colums of the grid
-	var container_size_x = get_viewport().get_visible_rect().size.x
-	var container_size_y = get_viewport().get_visible_rect().size.y
+	var container_size_x = grid_panel.size.x
+	var container_size_y = grid_panel.size.y
 
 	var relation_col_row = container_size_x / container_size_y
 	
@@ -71,11 +72,6 @@ func adjust_size(num_cards):
 		card.custom_minimum_size = Vector2(card_size, card_size)
 		
 		
-func _notification(what):
-	# adjust size when the window size is changed
-	if what == NOTIFICATION_RESIZED:
-		if (grid_container != null):
-			adjust_size(num_pairs * 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -114,3 +110,7 @@ func _on_timer_to_next_try_timeout():
 	card_up_2.turn_card()
 	card_up_1 = null
 	card_up_2 = null
+
+
+func _on_grid_panel_is_resized():
+	adjust_size(num_pairs * 2)
