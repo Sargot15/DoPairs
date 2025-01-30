@@ -82,8 +82,6 @@ func adjust_size(num_cards):
 	
 	for card in grid_container.get_children():
 		card.custom_minimum_size = Vector2(card_size, card_size)
-		
-		
 
 func _on_button_pressed():
 	generate_cards(num_pairs * 2)
@@ -121,7 +119,6 @@ func check_pair():
 		# add a penalty on the game timer. The penalty is greater if the card was clicked many times
 		game_time += card_up_1.tries_failed
 		game_time += card_up_2.tries_failed
-		print("added penalty: [" + str(card_up_1.tries_failed) + "," + str(card_up_2.tries_failed) + "]")
 
 func _on_timer_to_next_try_timeout():
 	card_up_1.turn_card()
