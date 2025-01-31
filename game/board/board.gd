@@ -13,6 +13,7 @@ var card_up_2 : Card = null
 var pairs_found : int = 0
 var game_started : bool = false
 var game_time : float = 0
+var penalty_time : int = 0
 
 func _ready():
 	generate_cards(num_pairs * 2)
@@ -22,7 +23,7 @@ func _process(delta):
 	if game_started:
 		game_time += delta
 	
-	label_time.text = "Time: " + str(game_time).pad_decimals(0)
+	label_time.text = "Time: " + str(game_time + penalty_time).pad_decimals(0)
 
 func generate_cards(num_cards):
 	# clean board if existed
@@ -53,6 +54,7 @@ func generate_cards(num_cards):
 	
 	game_started = false
 	game_time = 0
+	penalty_time = 0
 	
 func clean_board():
 	
@@ -117,8 +119,8 @@ func check_pair():
 		$TimerToNextTry.start()
 		
 		# add a penalty on the game timer. The penalty is greater if the card was clicked many times
-		game_time += card_up_1.tries_failed
-		game_time += card_up_2.tries_failed
+		penalty_time += card_up_1.tries_failed
+		penalty_time += card_up_2.tries_failed
 
 func _on_timer_to_next_try_timeout():
 	card_up_1.turn_card()
