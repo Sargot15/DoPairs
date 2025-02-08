@@ -7,6 +7,7 @@ extends Control
 @onready var grid_container: GridContainer = $"Full Board/GridPanel/CardsGrid"
 @onready var grid_panel : Panel = $"Full Board/GridPanel"
 @onready var label_time : Label = $"Full Board/TimerPanel/GameTimeLabel"
+@onready var win_panel : Panel = $"Full Board/WinPanel"
 
 var card_up_1 : Card = null
 var card_up_2 : Card = null
@@ -16,6 +17,7 @@ var game_time : float = 0
 var penalty_time : int = 0
 
 func _ready():
+	win_panel.visible = false
 	generate_cards(num_pairs * 2)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,7 +54,11 @@ func generate_cards(num_cards):
 	
 	adjust_size(num_cards)
 	
+	initialize_game_vars()
+
+func initialize_game_vars():
 	game_started = false
+	win_panel.visible = false
 	game_time = 0
 	penalty_time = 0
 	
@@ -113,6 +119,7 @@ func check_pair():
 		pairs_found += 1
 		if (pairs_found == num_pairs):
 			print("You win!!")
+			win_panel.visible = true
 			game_started = false
 	else:
 		# pair not found, show the cards for a moment before let the user to pick other cards

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://sfxsg2bl7m52"]
+[gd_scene load_steps=6 format=3 uid="uid://sfxsg2bl7m52"]
 
 [ext_resource type="Script" path="res://game/board/board.gd" id="1_qfdc7"]
 [ext_resource type="PackedScene" uid="uid://b2bsd6chi2q48" path="res://game/card/card.tscn" id="2_e7icj"]
 [ext_resource type="Script" path="res://game/board/timer_panel.gd" id="3_cgnd6"]
 [ext_resource type="Script" path="res://game/board/grid_panel.gd" id="3_e74q8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb8fx"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.784314)
 
 [node name="Board" type="Control"]
 layout_mode = 3
@@ -13,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qfdc7")
+num_pairs = 10
 card_scene = ExtResource("2_e7icj")
 
 [node name="Full Board" type="Panel" parent="."]
@@ -38,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.5
-offset_top = -11.5
-offset_right = 36.5
-offset_bottom = 38.5
+offset_left = -23.0
+offset_top = -11.92
+offset_right = 37.0
+offset_bottom = 17.08
 grow_horizontal = 2
 grow_vertical = 2
 text = "Time: "
@@ -60,13 +64,30 @@ script = ExtResource("3_e74q8")
 
 [node name="CardsGrid" type="GridContainer" parent="Full Board/GridPanel"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+grow_horizontal = 2
+
+[node name="WinPanel" type="Panel" parent="Full Board"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cb8fx")
+
+[node name="WinLabel" type="Label" parent="Full Board/WinPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.35
+anchor_right = 0.5
+anchor_bottom = 0.35
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "You Win!"
 
 [node name="Debug-GenerateCards" type="Button" parent="."]
 layout_mode = 0
